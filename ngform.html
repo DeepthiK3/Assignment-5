@@ -1,0 +1,38 @@
+<html ng-app>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+  </head>
+  
+  <body ng-app="">
+    <h1>ngForm</h1>
+    <hr>
+    <h2>Validation </h2>
+    <form ng-controller="validateCtrl" name="myForm" novalidate ng-submit="submitForm();">
+
+    <p>Username:<br>
+      <input type="text" name="user" ng-model="formData.userName" required ng-minlength="3" ng-maxlength="10">
+      <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+        <span ng-show="myForm.user.$error.required">Username is required.</span>
+      </span>
+    </p>
+
+    <p>Email:<br>
+      <input type="email" name="email" ng-model="formData.email" required>
+      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+        <span ng-show="myForm.email.$error.required">Email is required.</span>
+      </span>
+    </p>
+      
+    <p>Zip Code:<br>
+      <input type="text" name="zipcode" ng-model="formData.zipcode" required
+             ng-pattern="/^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/">
+      <span style="color:red" ng-show="myForm.zipcode.$dirty && myForm.zipcode.$invalid">
+        <span ng-show="myForm.zipcode.$error.required">Zip Code is required.</span>
+      </span>
+      <br>
+      <input type="submit" ng-disabled="myForm.$invalid">
+    </p>
+  </form>    
+
+  </body>
+</html>
